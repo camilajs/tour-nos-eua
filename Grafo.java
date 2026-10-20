@@ -16,6 +16,8 @@ public class Grafo<V,A> implements Cloneable{
         this.vertices = (V[]) new Object[n_vertices];
         this.tamanho = n_vertices;
 
+        this.arestas = (A[][]) new Object[n_vertices+2][n_vertices+2];
+
         this.clonador = new MeuCloneDeX<>();
     }
 
@@ -60,6 +62,22 @@ public class Grafo<V,A> implements Cloneable{
 
         }
 
+    }
+
+    public void adicionarAresta(V pA, V pB, A val) throws Exception{
+        if (pA == null || pB == null || val == null) throw new Exception("Preencha todas as informações");
+
+        int x = buscarVertice(pA);
+        int y = buscarVertice(pB);
+
+        this.arestas[x][y] = val;
+    }
+
+    //ta errado
+    public A buscarAresta(A aresta) throws Exception{
+        if (aresta == null) throw new Exception("Ta vazio essa bomba");
+
+        return aresta;
     }
 
     @Override 
